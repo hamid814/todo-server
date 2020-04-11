@@ -6,8 +6,9 @@ const errorHandler = (err, req, res, next) => {
   }
   
   if(err.code === 11000) {
+    console.log('here')
     err.status = 400;
-    err.maeeage = 'Duplicate field value entered';
+    err.message = 'Duplicate field value entered';
   }
   
   res.status(err.status || 500).json({
