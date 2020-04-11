@@ -17,7 +17,7 @@ exports.protect = asyncHandler(async (req, res, next) => {
 
   if(!token) {
     return next(
-      new ErrorResponse(401, 'You can Note access this route')
+      new ErrorResponse(401, 'You can Not access this route')
     )
   }
 

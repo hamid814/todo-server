@@ -2,18 +2,17 @@ const errorHandler = (err, req, res, next) => {
   console.log(err)
   if(err.name == 'ValidationError') {
     err.message = Object.values(err.errors).map(val => val.message);
-
-    console.log(err.message)
+    err.status = 400;
   }
   
   if(err.code === 11000) {
     err.status = 400;
-    err.maeeage = 'Duplicate field value entered'
+    err.maeeage = 'Duplicate field value entered';
   }
   
   res.status(err.status || 500).json({
     success: false,
-    maeesage: err.message || 'server error'
+    message: String(err.message) || 'server error'
   })
 }
 
